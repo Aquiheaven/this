@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Google Contacts</title>
+</head>
+
+<body>
+    <div class="container">
+        <section class="header">
+            <div class="header-menu">
+                <i class='bx bx-menu menu-icon'></i>
+            </div>
+            <div class="header-logo">
+                <span class="logo-image"><i class='bx bxs-user'></i></span>
+                <h1>Contacts</h1>
+            </div>
+        </section>
+        <section class="nav">
+            <div class="search">
+                <input type="text" placeholder="Recherche" id="search">
+                <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+            </div>
+        </section>
+    </div>
+    <main class="general">
+        <section class="first">
+            <div class="sidebar">
+                <div class="sidebar-content">
+                    <div class="sidebar-list">
+                        <button class="list-item" >
+                            <i class='bx bx-plus icon'></i>
+                            <span class="link">Créer un contact</span>
+                        </button>
+                        <div class="list-submenu">
+                            <a href="#" class="nav-link" data-target="page2"><span>Créer un contact</span></a>
+                            <a href="#" class="nav-link" data-target="page3"><span>Créer plusieurs contacts</span></a>
+                        </div>
+                    </div>
+                    <div class="lista">
+                        <a href="#" class="nav-link" data-target="page1">
+                            <i class='bx bx-user-circle icon'></i>
+                            <span class="link">Contacts</span>
+                        </a>
+                    </div>
+                    <div class="list">
+                        <a href="#" class="nav-link" data-target="page5">
+                            <i class='bx bxs-time icon'></i>
+                            <span class="link">Frequents</span>
+                        </a>
+                    </div>
+                    <div class="list-libelle">
+                        <p>Libelle</p>
+                        <i class='bx bx-plus icon' id="addLibelleBtn"></i>
+                    </div>
+                    <div id="libelleList"></div>
+                
+                    <!-- Modal -->
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Créer un nouveau libellé</h2>
+                            <input type="text" id="libelleInput" placeholder="Titre du libellé">
+                            <div class="modal-actions">
+                                <button id="saveBtn">Enregistrer</button>
+                                <button id="cancelBtn">Annuler</button>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+        </section>
+        <section class="second">
+
+            <div class="content">
+                <div id="page1" class="page">
+                    <div class="listes">
+                        <div class="listcont">
+                            <h1>Contacts <span>(10)</span></h1>
+                            <table id="contactTable">
+                                <thead>
+                                    <tr>
+                                        <th>Prénom</th>
+                                        <th>Nom</th>
+                                        <th>Email</th>
+                                        <th>Numéro de téléphone</th>
+                                        <th>Fonction et entreprise</th>
+                                        <th>Libellé</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Les nouvelles lignes de contact seront ajoutées ici -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="page2" class="page">
+                    <section class="form">
+                        <div class="form-header">
+                            <div class="addContact__header">
+                                <div class="icone-back">
+                                    <span><i class="fa fa-arrow-left" id="backIcon"></i></span>
+                                </div>
+                                <div class="btn-save">
+                                    <button class="saveContactBtn" type="submit" form="contactForm">Enregistrer</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="addContact__body">
+                            <div class="body-contact__img">
+                                <img src="assets/img/silhouette.png" alt="" class="img-addC">
+                                <div><span class="img-ajout"><i class="fa fa-plus"></i></span></div>
+                            </div>
+                            <div class="body-contact__libelle">
+                                <button class="btn-libelle"><i class="fa fa-plus"></i> Libellé</button>
+                                <div class="libelle-list" style="display: none;">
+                                    <ul>
+                                        <li class="libelle-item">Libellé 1</li>
+                                        <li class="libelle-item">Libellé 2</li>
+                                        <li class="libelle-item">Libellé 3</li>
+                                        <!-- Ajoutez plus de libellés si nécessaire -->
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="prenom">Prénom</label>
+                                    <input type="text" id="prenom" name="prenom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nom">Nom</label>
+                                    <input type="text" id="nom" name="nom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="entreprise">Entreprise</label>
+                                    <input type="text" id="entreprise" name="entreprise">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fonction">Fonction</label>
+                                    <input type="text" id="fonction" name="fonction">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telephone">Téléphone</label>
+                                    <input type="tel" id="telephone" name="telephone">
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div id="page3" class="page">
+                    <section class="form">
+                        <div class="form-header">
+                            <div class="addContact__header">
+                                <div class="icone-back">
+                                    <span><i class="fa fa-arrow-left"></i></span>
+                                </div>
+                                <div class="btn-save">
+                                    <button class="saveContactBtn" type="submit" form="contactForm2">Enregistrer</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="addContact__body">
+                            <div class="body-contact__img">
+                                <img src="assets/img/silhouette.png" alt="" class="img-addC">
+                                <div><span class="img-ajout"><i class="fa fa-plus"></i></span></div>
+                            </div>
+                            <div class="body-contact__libelle">
+                                <button class="btn-libelle"><i class="fa fa-plus"></i> Libellé</button>
+                            </div>
+                            <form id="contactForm2">
+                                <div class="form-group">
+                                    <label for="prenom">Prénom</label>
+                                    <input type="text" id="prenom" name="prenom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nom">Nom</label>
+                                    <input type="text" id="nom" name="nom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="entreprise">Entreprise</label>
+                                    <input type="text" id="entreprise" name="entreprise">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fonction">Fonction</label>
+                                    <input type="text" id="fonction" name="fonction">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telephone">Téléphone</label>
+                                    <input type="tel" id="telephone" name="telephone">
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div id="page4" class="page">
+                    <div class="listes">
+                        <div class="listcont">
+                            <h1>Contacts <span>(10)</span></h1>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Titre</th>
+                                        <th>Email</th>
+                                        <th>Numéro de téléphone</th>
+                                        <th>Fonction et entreprise</th>
+                                        <th>Libellé</th>
+                                    </tr>
+                                    <tr class="line"></tr>
+                                </thead>
+                                <!-- Les lignes de contenu du tableau seront ajoutées ici -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="page5" class="page">Page 5: Fréquents</div>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
+</body>
+
+</html>
